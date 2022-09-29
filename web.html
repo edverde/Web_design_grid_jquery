@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>web Business</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- ------------------------- animacion anclas ------------------------------------- -->
+	<script>
+		$(document).ready(function() {
+			$('a[href^="#"]').click(function() {
+		    var destino = $(this.hash);
+		    if (destino.length == 0) {
+		      destino = $('a[name="' + this.hash.substr(1) + '"]');
+		    }
+		    if (destino.length == 0) {
+		      destino = $('html');
+		    }
+		    $('html, body').animate({ scrollTop: destino.offset().top - 225 }, 1000);
+		    return false;
+		  });
+		});
+	</script>
+</head>
+<body>
+	<!-- -------------------------------cabecera--------------------------------------------- -->
+	<div class="flex">
+		<h2><a href="#" style="color:var(--negro);font-weight:600;">Business</a></h2>
+		<nav class="menuweb">
+			<a href="#">ABOUT</a>
+			<a href="#">WORK</a>
+			<a href="#">TEAM</a>
+			<a href="#">BLOG</a>
+			<a href="#">CONTACT</a>
+		</nav>
+		<button class="contact" style="margin-right: 20px;">CONTACT US</button>		
+		<img src="img/icono.png" alt="" class="icon_burger" width="22">
+		<script>						
+			$('.icon_burger').click(function(){
+				$('nav').slideToggle(300)				
+			})									
+		</script>			
+	</div>	
+<header>
+	<div class="contenedor_cabecera">
+		<div class="slidercab">
+			<h1 style="font-size: 3rem; color:var(--blanco)">Grow your business.</h1>
+			<h4 style="color:var(--transparente); margin-bottom: 30px; line-height: 1.5;">Give your business a boost with a beautifully crafted homepage.</h4>
+			<a href="#" class="btn">LEARN MORE</a>
+		</div>
+		<div class="slidercab">
+			<h1 style="font-size: 3rem; color:var(--blanco)">What we do.</h1>
+			<h4 style="color:var(--transparente); margin-bottom: 30px; line-height: 1.5;">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Suscipit, accusamus?</h4>
+			<a href="#" class="btn">LEARN MORE</a>
+		</div>
+		<div class="slidercab">
+			<h1 style="font-size: 3rem; color:var(--blanco)">Who we are.</h1>
+			<h4 style="color:var(--transparente); margin-bottom: 30px; line-height: 1.5;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ab.</h4>
+			<a href="#" class="btn">LEARN MORE</a>
+		</div>
+		<div class="controles">
+			<div class="anterior">&#8678;</div>
+			<div class="paginacion">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="siguiente">&#8680;</div>
+		</div>
+		<script>
+			let index=0;
+			$('.paginacion > div').click(function(){
+				index = $(this).index()
+				$('.paginacion > div').css('background-color','var(--gris)')
+				$(this).css('background-color', 'var(--negro)')
+				$('.slidercab').hide()
+				$('.slidercab').eq(index).fadeIn()	
+			})
+			$('.siguiente').click(function(){
+				index++;
+				if(index == 3){
+					index=0
+				}
+				$('.paginacion > div').css('background-color','var(--gris)')
+				$('.paginacion > div').eq(index).css('background-color', 'var(--negro)')
+				$('.slidercab').hide()
+				$('.slidercab').eq(index).fadeIn()
+			})
+			$('.anterior').click(function(){
+				index--;
+				if(index == -1){
+					index=2
+				}
+				
+				$('.paginacion > div').css('background-color','var(--gris)')
+				$('.paginacion > div').eq(index).css('background-color', 'var(--negro)')
+				$('.slidercab').hide()
+				$('.slidercab').eq(index).fadeIn()
+			})
+			// ---------------------------funciones automatico -------------------------
+			let intervalo = setInterval(mas,5000)
+			$('.contenedor_cabecera').hover(function(){
+				clearInterval(intervalo)
+			},function(){
+				intervalo = setInterval(mas,5000)
+			})
+			function mas(){
+				index++;
+				if(index == 3){
+					index=0
+				}
+				$('.paginacion > div').css('background-color','var(--gris)')
+				$('.paginacion > div').eq(index).css('background-color', 'var(--negro)')
+				$('.slidercab').hide()
+				$('.slidercab').eq(index).fadeIn()
+			}
+			
+		</script>		
+	</div>
+	
+</header>
+	<div class="contFlecha">
+		<span><a href="#">&#8682;</a></span>
+	</div>
+	<script>
+		$(document).scroll(function(){
+			if($(document).scrollTop()>600){
+				$('.contFlecha').fadeIn(1000)
+			}else {
+				$('.contFlecha').fadeOut(1000)
+			}
+		})	
+	</script>
+		
+	<!-- ------------------------------------ section 1--------------------------------------------------- -->
+<main>
+	<section class="presentacion">
+		<h6>WHAT WE BELIEVE IN</h6>
+		<h3>Grow your business, establish your brand, and put your customers first.</h3>
+		<div class="slider">
+			<ul class="lista">			
+				<li><img src="slider/3.jpg" alt="rnr"></li>
+				<li><img src="slider/4.jpg" alt="man"></li>
+				<li><img src="slider/5.jpg" alt="kiss"></li>
+				<li><img src="slider/6.jpg" alt="woman"></li>
+				<li><img src="slider/7.jpg" alt="love"></li>
+				<li><img src="slider/8.jpg" alt="tacto"></li>
+				<li><img src="slider/9.jpg" alt="mente"></li>
+			</ul>
+			<div class="control derecha">&#8680;</div>
+			<div class="control izquierda">&#8678;</div>
+		</div>
+		<script>
+			// $('.slider li:last').insertBefore('.slider li:first')
+			// $('.slider ul').css('margin-left','-400px')
+			// $('.derecha').click(function(){
+			// 	$('.slider ul').animate({
+			// 		marginLeft: '-800px'
+			// 	},1000, function(){
+			// 		$('.slider li:first').insertAfter('.slider li:last')
+			// 		$('.slider ul').css('margin-left', '0px;')
+			// 	})
+			// })
+			// $('.izquierda').click(function(){
+			// 	$('.slider ul').animate({
+			// 		marginLeft: '0'
+			// 	},1000, function(){
+			// 		$('.slider li:last').insertBefore('.slider li:first')
+			// 		$('.slider ul').css('margin-left','-400px;')
+			// 	})
+			// })
+
+			$('li:last').insertBefore('li:first');
+			// $('ul').css('margin-left','-400px');
+			
+
+			function siguiente(){
+				$('.slider ul').animate({
+					marginLeft: '-800px'
+				},1000, function(){
+					$('.slider li:first').insertAfter('.slider li:last');
+					$('.slider ul').css('margin-left','-400px' );
+				});
+			}
+
+
+			$('.derecha').click(siguiente);
+
+
+			$('.izquierda').click(function(){
+				$('.slider ul').animate({
+					marginLeft: '0'
+				},3000, function(){
+					$('.slider li:last').insertBefore('.slider li:first');
+					$('.slider ul').css('margin-left','-400px' );
+				});
+			});
+
+
+
+			let auto =setInterval(siguiente, 3000);
+			
+			$('.slider').hover(function(){
+				clearInterval(auto);
+			}, function(){
+				auto =setInterval(siguiente, 3000);
+			});					
+		</script>
+	</section>
+	<section class="seccion_1">
+		<img src="img/img1.svg" alt="" width="100%">
+		<div class="sc1">
+			<h5>ABOUT</h5>
+			<h3>Who we are</h3>
+			<p>Nulla vel sodales tellus, quis condimentum enim. Nunc porttitor venenatis feugiat. Etiam quis faucibus erat, non accumsan leo. Aliquam erat volutpat. Vestibulum ac faucibus eros. Cras ullamcorper gravida tellus ut consequat.</p>
+			<button><a href="">LEARN MORE</a></button>
+		</div>
+		<script>
+			$('.seccion_1 button').click(function(){
+				alert($(document).scrollTop())
+			})
+			// $(document).scroll(function(){
+			// 	if($(document).scrollTop()> $('.seccion_1').offset().top-425){
+			// 		$('.seccion_1').animate({
+			// 			opacity: 1
+			// 		},500)	
+			// 	}else{
+			// 		$('.seccion_1').animate({
+			// 			opacity: 0
+			// 		},2000)	
+			// 	}
+			// })
+			$(document).scroll(function(){
+				if($(document).scrollTop()> $('.seccion_1').offset().top-425){
+					$('.seccion_1').animate({
+						opacity: 1
+					},500)	
+				}
+			})
+		</script>
+	</section>
+	<section class="seccion_2">
+		<img src="img/img2.svg" alt="" width="100%">
+		<div class="sc2">
+			<h5>TEAM</h5>
+			<h3>What we do</h3>
+			<p>Nulla vel sodales tellus, quis condimentum enim. Nunc porttitor venenatis feugiat. Etiam quis faucibus erat, non accumsan leo. Aliquam erat volutpat. Vestibulum ac faucibus eros. Cras ullamcorper gravida tellus ut consequat.</p>
+			<button><a href="">LEARN MORE</a></button>
+		</div>
+		<script>
+			$('.seccion_2 button').click(function(){
+				alert($(document).scrollTop())
+			})
+			 $(document).scroll(function(){
+				if($(document).scrollTop()> $('.seccion_2').offset().top-700){
+					$('.seccion_2').animate({
+						left: 0
+					},500)
+				}
+			})
+		</script>
+	</section>
+	<section class="titulo_articulos">
+		<h5>ABOUT US</h5>
+		<h3>Company news</h3>
+	</section>
+	<div class="cont_art">
+		<article class="articulo a_1">
+			<h3>10 Quick Tips About Blogging</h3>
+			<p>FEB 21, 2019</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+		</article>
+		<article class="articulo a_2">
+			<h3>15 Best Blogs To Follow About Web Design</h3>
+			<p>FEB 21, 2019</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+		</article>
+		<article class="articulo a_3">
+			<h3>7 of the Best Examples of Beautiful Blog Design</h3>
+			<p>FEB 21, 2019</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+		</article>
+		<script>
+			$(document).scroll(function(){
+				if($(document).scrollTop()> $('.a_1').offset().top-925){
+					$('.a_1').animate({
+						left: 0
+					},500)
+					
+				}
+			})
+			$(document).scroll(function(){
+				if($(document).scrollTop()> $('.a_3').offset().top-425){
+					$('.a_3').animate({
+						right: 0
+					},500)
+				}
+			})
+		</script>
+	</div>
+	<section class="galery_grid">
+		<h3>Galery-Grid</h3>
+		<ul class="grid">		
+			<li><img src="img/0.jpg" alt="ramas"></li>
+			<li><img src="img/1.jpg" alt="torre electrica"></li>
+			<li><img src="img/2.jpg" alt="camino"></li>
+			<li><img src="img/3.jpg" alt="fuji"></li>
+			<li><img src="img/4.jpg" alt="rocas"></li>
+			<li><img src="img/5.jpg" alt="ciudad"></li>
+			<li><img src="img/6.jpg" alt="monument valley"></li>
+		</ul>
+		<!-- <div class="modal">
+			<img src="img/0.jpg" alt="">
+			<div class="control cerrar">X</div>
+			<div class="control izquierda">&#8678;</div>
+			<div class="control derecha">&#8680;</div>
+		</div> -->
+	</section>
+	<script>
+		$('.grid > li').click(function(){
+			// alert($(this).index()) 
+			let num = $(this).index();
+			$('.grid').after(`
+				<div class="modal">
+					<img src="img/${num}.jpg" alt="">
+					<div class="control cerrar">X</div>
+					<div class="control izquierda">&#8678;</div>
+					<div class="control derecha">&#8680;</div>
+				</div>
+			`)
+			$('.cerrar').click(function(){
+				$('.modal').remove()
+			})
+			$('.modal .derecha').click(function(){
+				num++;
+				if(num==7){
+					num=0
+				}
+				$('.modal img').attr(`src`,`img/${num}.jpg`)
+			})
+			$('.modal .izquierda').click(function(){
+				num--;				
+				if(num==-1){
+					num=6
+				}
+				$('.modal img').attr(`src`,`img/${num}.jpg`)
+			})
+		})
+	</script>
+</main>
+<footer>
+	<div class="final">
+		<h2>Grow your business.</h2>
+		<p>Today is the day to build the business of your dreams. Share your mission with the world — and blow your customers away.</p>
+		<button><a href="">START NOW</a></button>
+	</div>
+	<div class="minilogo">		
+		<img src="img/minilogo.png" alt="" width="15" style="color: grey">
+		<small style="margin: 28px 5px 0px;">Powered by Webflow</small>
+	</div>
+	
+</footer>
+</body>
+</html>
